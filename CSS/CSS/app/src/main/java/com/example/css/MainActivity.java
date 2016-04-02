@@ -38,8 +38,7 @@ public class MainActivity extends AppCompatActivity
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new CreateEventFragment(), "Create Event");
         viewPagerAdapter.addFragments(new AttendingEventsFragments(), "My Events");
-//        viewPagerAdapter.addFragments(new Fragment2(), "Frag2");
-//        viewPagerAdapter.addFragments(new fragment3(), "Frag3");
+
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 

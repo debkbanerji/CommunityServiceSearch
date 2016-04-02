@@ -46,7 +46,7 @@ public class EventListAdapter extends ArrayAdapter<HashMap> {
         }
 
         Object event = events.get(position);
-        System.out.println("getView");
+        //System.out.println("getView");
 
         if (event instanceof HashMap) {
 //            HashMap<String, Object> m = (HashMap) article;
@@ -61,10 +61,10 @@ public class EventListAdapter extends ArrayAdapter<HashMap> {
 //            String[] splitDate = stringDate.split(" ");
 //            stringDate = "Shared: " + splitDate[0] + " " + splitDate[1] + " " + splitDate[2] + ", " + splitDate[3] + " ";
 //            timeText.setText(stringDate);
-            System.out.println("IS HASHMAP");
+            //System.out.println("IS HASHMAP");
         }
         if (event instanceof Event) {
-            System.out.println("IS EVENT");
+            // System.out.println("IS EVENT");
             TextView titleText = (TextView) convertView.findViewById(com.example.css.R.id.titleText);
             titleText.setText(((Event) event).getName());
 
@@ -74,7 +74,9 @@ public class EventListAdapter extends ArrayAdapter<HashMap> {
             TextView dateText = (TextView) convertView.findViewById(com.example.css.R.id.dateText);
             SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
             String strDate = formatter.format(new Date(((Event) event).getDate()));
-            dateText.setText(strDate);
+            formatter = new SimpleDateFormat("hh/mm");
+            String strTime = formatter.format(new Date(((Event) event).getDate()));
+            dateText.setText("At: " + strTime + " On: " + strDate);
 
             TextView addressText = (TextView) convertView.findViewById(com.example.css.R.id.addressText);
             addressText.setText("Location: " + ((Event) event).getAddress());
@@ -93,7 +95,6 @@ public class EventListAdapter extends ArrayAdapter<HashMap> {
                 }
             });
         }
-
 
 
         return convertView;
