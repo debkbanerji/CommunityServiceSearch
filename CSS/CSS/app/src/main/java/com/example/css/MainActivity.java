@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.example.css.dummy.DummyContent;
 import com.firebase.client.DataSnapshot;
@@ -70,10 +71,12 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         Menu menu = navigationView.getMenu();
         menu.removeGroup(0);
-        Menu topChannelMenu = menu.addSubMenu("Deb's qualities");
-        topChannelMenu.add("Fab");
-        topChannelMenu.add("Bu");
-        topChannelMenu.add("Lous");
+        Menu topChannelMenu = menu.addSubMenu("Deb Banerji");
+        topChannelMenu.add("Create Event");
+        topChannelMenu.add("View Events");
+        topChannelMenu.add("Contacts");
+        topChannelMenu.add("Share");
+        topChannelMenu.add("Settings");
         HashMap<String, HashMap<String, Object>> eventMap = new HashMap<>();
         HashMap<String, HashMap<String, Object>> userMap = new HashMap<>();
 
