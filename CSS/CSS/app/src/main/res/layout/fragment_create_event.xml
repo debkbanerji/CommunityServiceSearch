@@ -142,13 +142,19 @@
         <TimePicker
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/timePicker" />
+            android:id="@+id/timePicker"
+            android:scaleType="fitCenter"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"/>
 
         <DatePicker
             android:id="@+id/datePicker2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"/>
 
         <ImageButton
             android:layout_width="200dp"
