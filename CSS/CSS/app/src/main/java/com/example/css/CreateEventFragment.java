@@ -3,6 +3,7 @@ package com.example.css;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,8 @@ public class CreateEventFragment extends Fragment {
         final EditText enteredDescription = (EditText) rootView.findViewById(R.id.eventDescription);
         final EditText enteredAddress = (EditText) rootView.findViewById(R.id.eventAddress);
         final EditText enteredDate = (EditText) rootView.findViewById(R.id.datePicker);
+        final EditText enteredOrganizer = (EditText) rootView.findViewById(R.id.eventOrganizer);
+        enteredDescription.setMovementMethod(new ScrollingMovementMethod());
 
 
         Button createButton = ((Button) rootView.findViewById(R.id.createButton));
@@ -54,10 +57,12 @@ public class CreateEventFragment extends Fragment {
                 String description = enteredDescription.getText().toString();
                 String address = enteredAddress.getText().toString();
                 String stringDate = enteredDate.getText().toString();
+                String organizer = enteredOrganizer.getText().toString();
                 enteredName.setText("");
                 enteredDate.setText("");
                 enteredDescription.setText("");
                 enteredAddress.setText("");
+                enteredOrganizer.setText("");
                 long date = 0;
                 try {
                     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
@@ -67,7 +72,7 @@ public class CreateEventFragment extends Fragment {
                     date = System.currentTimeMillis();
                 }
                 stringDate = String.valueOf(date);
-                Event event = new Event(name, "Me", description, address, date,new ArrayList<String>());
+                Event event = new Event(name, organizer, description, address, date,new ArrayList<String>());
                 firebase.child("eventList").child(stringDate).setValue(event);
             }
         });

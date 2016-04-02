@@ -8,106 +8,125 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Create an Event"
-        android:id="@+id/textView2"
-        android:layout_gravity="center_horizontal|top"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="35dp"/>
+        android:layout_gravity="center_horizontal|top"
+        android:text="Create an Event"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="35dp" />
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Event Name:"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="20dp"
+        android:text="Event Name:"
         android:textSize="25dp" />
 
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description:"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView3"
+        android:text="Description:"
         android:textIsSelectable="false"
         android:textSize="25dp" />
 
     <TextView
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Address:"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/textView4"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView4"
+        android:text="Organizer:"
         android:textSize="25dp" />
 
     <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date:"
-        android:id="@+id/textView6"
-        android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView7"
+        android:text="Address:"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView5"
+        android:text="Date(mm/dd/yy):"
         android:textSize="25dp" />
 
     <Button
+        android:id="@+id/createButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+android:layout_below="@id/datePicker"
+        android:layout_centerHorizontal="true"
         android:text="Create"
         android:textAllCaps="false"
-        android:id="@+id/createButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="52dp"
         android:textSize="25dp" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/eventName"
-        android:layout_toRightOf="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/textView4"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/textView2" />
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/textView3" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/eventDescription"
-        android:layout_toRightOf="@+id/textView4"
-        android:layout_below="@+id/eventName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/eventName"
         android:layout_alignRight="@+id/eventName"
-        android:layout_alignEnd="@+id/eventName" />
+        android:layout_below="@+id/eventName"
+        android:maxLines = "1"
+        android:scrollbars = "vertical"
+        android:layout_toRightOf="@+id/textView4" />
 
     <EditText
+        android:id="@+id/eventOrganizer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/eventAddress"
-        android:layout_toRightOf="@+id/textView5"
-        android:layout_below="@+id/textView4"
+        android:layout_alignEnd="@+id/eventDescription"
         android:layout_alignRight="@+id/eventDescription"
-        android:layout_alignEnd="@+id/eventDescription" />
+        android:layout_below="@+id/textView4"
+        android:layout_toRightOf="@+id/textView7" />
 
     <EditText
+        android:id="@+id/eventAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
+        android:layout_alignEnd="@+id/eventOrganizer"
+        android:layout_alignRight="@+id/eventOrganizer"
+        android:layout_below="@+id/textView7"
+        android:layout_toRightOf="@+id/textView5" />
+
+    <EditText
         android:id="@+id/datePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/eventAddress"
+        android:layout_alignRight="@+id/eventAddress"
         android:layout_below="@+id/textView5"
         android:layout_toRightOf="@+id/textView6"
-        android:layout_alignRight="@+id/eventAddress"
-        android:layout_alignEnd="@+id/eventAddress" />
+        android:ems="10"
+        android:inputType="date" />
 
 </RelativeLayout>
