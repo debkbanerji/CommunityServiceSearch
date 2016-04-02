@@ -12,6 +12,10 @@ import android.widget.ImageButton;
 
 import com.firebase.client.Firebase;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +38,7 @@ public class CreateEventFragment extends Fragment {
 
         final EditText enteredName = (EditText) rootView.findViewById(R.id.eventName);
         final EditText enteredDescription = (EditText) rootView.findViewById(R.id.eventDescription);
-        final EditText endteredAddress = (EditText) rootView.findViewById(R.id.eventAddress);
+        final EditText enteredAddress = (EditText) rootView.findViewById(R.id.eventAddress);
         final EditText enteredDate = (EditText) rootView.findViewById(R.id.datePicker);
 
 
@@ -47,8 +51,21 @@ public class CreateEventFragment extends Fragment {
 //                System.out.println("swag");
                 String name = enteredName.getText().toString();
                 String description = enteredDescription.getText().toString();
-                String address = endteredAddress.getText().toString();
-                String date = enteredDate.getText().toString();
+                String address = enteredAddress.getText().toString();
+                String stringDate = enteredDate.getText().toString();
+                enteredName.setText("");
+                enteredDate.setText("");
+                enteredDescription.setText("");
+                enteredAddress.setText("");
+                long date = 0;
+                try {
+                    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
+                    Date d = formatter.parse(stringDate);
+                    date = d.getTime();
+                } catch(ParseException e) {
+                    date = System.currentTimeMillis();
+                }
+
                 firebase.child("SWAG").setValue(name);
             }
         });
