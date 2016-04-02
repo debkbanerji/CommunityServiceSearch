@@ -13,33 +13,31 @@ import android.view.ViewGroup;
 import com.example.css.dummy.DummyContent;
 import com.example.css.dummy.DummyContent.DummyItem;
 
-import java.util.List;
-
 /**
  * A fragment representing a list of Items.
  * <p/>
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class MyEventFragment extends Fragment {
+public class MyEventFragment0 extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    private com.example.css.MyEventFragment.OnListFragmentInteractionListener mListener;
+    private MyEventFragment0.OnListFragmentInteractionListener mListener;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public MyEventFragment() {
+    public MyEventFragment0() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static MyEventFragment newInstance(int columnCount) {
-        MyEventFragment fragment = new MyEventFragment();
+    public static MyEventFragment0 newInstance(int columnCount) {
+        MyEventFragment0 fragment = new MyEventFragment0();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -69,7 +67,7 @@ public class MyEventFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyEventRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyEventRecyclerViewAdapter0(DummyContent.ITEMS, mListener));
         }
         return view;
     }

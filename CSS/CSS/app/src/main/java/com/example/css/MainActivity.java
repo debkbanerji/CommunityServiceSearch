@@ -1,11 +1,8 @@
 package com.example.css;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,9 +20,11 @@ import com.firebase.client.ValueEventListener;
 
 import java.util.HashMap;
 
+import layout.AttendingEventsFragments;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        MyEventFragment.OnListFragmentInteractionListener{
+        MyEventFragment0.OnListFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new CreateEventFragment(), "Create Event");
-        viewPagerAdapter.addFragments(new MyEventFragment(), "My Events");
+        viewPagerAdapter.addFragments(new AttendingEventsFragments(), "My Events");
 //        viewPagerAdapter.addFragments(new Fragment2(), "Frag2");
 //        viewPagerAdapter.addFragments(new fragment3(), "Frag3");
         viewPager.setAdapter(viewPagerAdapter);
