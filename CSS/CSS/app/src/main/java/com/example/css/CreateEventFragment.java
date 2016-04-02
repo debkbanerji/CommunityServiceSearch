@@ -48,6 +48,7 @@ public class CreateEventFragment extends Fragment {
         final DatePicker datePicker = (DatePicker) rootView.findViewById(R.id.datePicker2);
         final TimePicker timePicker = (TimePicker) rootView.findViewById(R.id.timePicker);
         enteredDescription.setMovementMethod(new ScrollingMovementMethod());
+        timePicker.setIs24HourView(true);
 
 
         ImageButton createButton = ((ImageButton) rootView.findViewById(R.id.createButton));
@@ -69,7 +70,6 @@ public class CreateEventFragment extends Fragment {
                 enteredOrganizer.setText("");
                 long date = 0;
                 int day = datePicker.getDayOfMonth();
-//                System.out.println("day: "+day);
                 int month = datePicker.getMonth() + 1;
                 int year = datePicker.getYear();
                 int hour = timePicker.getHour();

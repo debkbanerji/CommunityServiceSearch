@@ -74,7 +74,7 @@ public class EventListAdapter extends ArrayAdapter<HashMap> {
             TextView dateText = (TextView) convertView.findViewById(com.example.css.R.id.dateText);
             SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy");
             String strDate = formatter.format(new Date(((Event) event).getDate()));
-            formatter = new SimpleDateFormat("hh/mm");
+            formatter = new SimpleDateFormat("hh:mm");
             String strTime = formatter.format(new Date(((Event) event).getDate()));
             dateText.setText("At: " + strTime + " On: " + strDate);
 
