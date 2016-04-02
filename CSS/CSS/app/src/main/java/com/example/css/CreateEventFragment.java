@@ -14,6 +14,7 @@ import com.firebase.client.Firebase;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -65,8 +66,9 @@ public class CreateEventFragment extends Fragment {
                 } catch(ParseException e) {
                     date = System.currentTimeMillis();
                 }
-
-                firebase.child("SWAG").setValue(name);
+                stringDate = String.valueOf(date);
+                Event event = new Event(name, "Me", description, address, date,new ArrayList<String>());
+                firebase.child("eventList").child(stringDate).setValue(event);
             }
         });
 
