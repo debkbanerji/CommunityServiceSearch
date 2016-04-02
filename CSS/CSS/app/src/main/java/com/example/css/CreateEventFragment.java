@@ -24,9 +24,6 @@ public class CreateEventFragment extends Fragment {
     }
 
 
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,11 +32,10 @@ public class CreateEventFragment extends Fragment {
         // Inflate the layout for this fragment
         final Firebase firebase = new Firebase("https://cssquare.firebaseio.com/");
 
-        final EditText name = (EditText) rootView.findViewById(R.id.eventName);
-        final EditText description = (EditText) rootView.findViewById(R.id.eventDescription);
-        final EditText address = (EditText) rootView.findViewById(R.id.eventAddress);
-        final EditText date = (EditText) rootView.findViewById(R.id.datePicker);
-
+        final EditText enteredName = (EditText) rootView.findViewById(R.id.eventName);
+        final EditText enteredDescription = (EditText) rootView.findViewById(R.id.eventDescription);
+        final EditText endteredAddress = (EditText) rootView.findViewById(R.id.eventAddress);
+        final EditText enteredDate = (EditText) rootView.findViewById(R.id.datePicker);
 
 
         Button createButton = ((Button) rootView.findViewById(R.id.createButton));
@@ -48,8 +44,12 @@ public class CreateEventFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                System.out.println("swag");
-               firebase.child("SWAG").setValue("yo");
+//                System.out.println("swag");
+                String name = enteredName.getText().toString();
+                String description = enteredDescription.getText().toString();
+                String address = endteredAddress.getText().toString();
+                String date = enteredDate.getText().toString();
+                firebase.child("SWAG").setValue(name);
             }
         });
 
