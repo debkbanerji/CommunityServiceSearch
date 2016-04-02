@@ -13,6 +13,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -22,6 +29,13 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Firebase.setAndroidContext(this);
+
+        Firebase firebase = new Firebase("https://cssquare.firebaseio.com/");
+
+//        firebase.child("eventList").setValue(true);
+//        firebase.child("userList").setValue(true);
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +54,30 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        HashMap<String, HashMap<String, Object>> eventMap = new HashMap<>();
+        HashMap<String, HashMap<String, Object>> userMap = new HashMap<>();
+
+        firebase.child("userList").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                System.out.println(snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
+            }
+
+            @Override
+            public void onCancelled(FirebaseError error) {
+            }
+        });
+
+        firebase.child("eventList").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                System.out.println(snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
+            }
+
+            @Override
+            public void onCancelled(FirebaseError error) {
+            }
+        });
     }
 
     @Override
