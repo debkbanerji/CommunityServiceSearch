@@ -76,7 +76,7 @@ public class EventListAdapter extends ArrayAdapter<HashMap> {
             String strDate = formatter.format(new Date(((Event) event).getDate()));
             formatter = new SimpleDateFormat("hh:mm");
             String strTime = formatter.format(new Date(((Event) event).getDate()));
-            dateText.setText("At: " + strTime + " On: " + strDate);
+            dateText.setText("At " + strTime + " on " + strDate);
 
             TextView addressText = (TextView) convertView.findViewById(com.example.css.R.id.addressText);
             addressText.setText("Location: " + ((Event) event).getAddress());
