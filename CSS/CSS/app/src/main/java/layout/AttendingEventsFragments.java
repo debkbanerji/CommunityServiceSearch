@@ -6,8 +6,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.example.css.Event;
+import com.example.css.EventListAdapter;
 import com.example.css.R;
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,8 +33,70 @@ public class AttendingEventsFragments extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        final View rootView = inflater.inflate(R.layout.fragment_attending_events_fragments, container, false);
+
+        final ArrayList eventList = new ArrayList(0);
+//        eventList.add(new HashMap<>(0));
+
+        final EventListAdapter[] eventAdapter = new EventListAdapter[1];
+        eventAdapter[0] = new EventListAdapter(rootView.getContext(), R.layout.feed_item, eventList);
+
+        final ListView feedListView = (ListView) rootView.findViewById(R.id.eventListView);
+        feedListView.setAdapter(eventAdapter[0]);
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_attending_events_fragments, container, false);
+
+        final Firebase firebase = new Firebase("https://cssquare.firebaseio.com/");
+
+        firebase.child("eventList").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                //Event addEvent = new Event(dataSnapshot.getValue());
+//                Event addEvent = new Event("Test","Me","somedescription","someaddress",1,new ArrayList<String>(0));
+
+                HashMap<String, String> map = (HashMap) dataSnapshot.getValue();
+
+                String name = map.get("name");
+                String address = map.get("address");
+                String description = map.get("description");
+                String creator = map.get("creator");
+                ArrayList<String> usernames = new ArrayList<String>(); //is being left blank
+                long date = 0;
+                try {
+//                    date = Long.parseLong(map.get("date"));
+                    date = (Long) (Object) map.get("date");
+                } catch (NumberFormatException nfe) {
+                    date = System.currentTimeMillis();
+                }
+
+                Event addEvent = new Event(name, creator, description, address, date, usernames);
+                eventList.add(addEvent);
+                eventAdapter[0] = new EventListAdapter(rootView.getContext(), R.layout.feed_item, eventList);
+                feedListView.setAdapter(eventAdapter[0]);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+        return rootView;
     }
 
 }

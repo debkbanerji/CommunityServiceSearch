@@ -74,7 +74,7 @@
         android:id="@+id/createButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-android:layout_below="@id/datePicker"
+        android:layout_below="@id/textView6"
         android:layout_centerHorizontal="true"
         android:text="Create"
         android:textAllCaps="false"
@@ -96,9 +96,9 @@ android:layout_below="@id/datePicker"
         android:layout_alignEnd="@+id/eventName"
         android:layout_alignRight="@+id/eventName"
         android:layout_below="@+id/eventName"
-        android:maxLines = "1"
-        android:scrollbars = "vertical"
-        android:layout_toRightOf="@+id/textView4" />
+        android:layout_toRightOf="@+id/textView4"
+        android:maxLines="1"
+        android:scrollbars="vertical" />
 
     <EditText
         android:id="@+id/eventOrganizer"
