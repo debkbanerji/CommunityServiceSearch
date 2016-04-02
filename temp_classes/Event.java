@@ -1,18 +1,17 @@
-import java.util.Date;
 import java.util.ArrayList;
 public class Event {
 	private String name;
 	private String creator; //person who made event
 	private String description;
 	private String address;
-	private Date date;
+	private long date;
 	private ArrayList<String> usernames; //everyone attending the event
 	public Event(String name, String creator, String description, String address, long date, ArrayList<String> usernames) {
 		this.name = name;
 		this.creator = creator;
 		this.description = description;
 		this.address = address;
-		this.date = new Date(date);
+		this.date = date;
 		this.usernames = usernames;
 	}
 	//--setters and getters
@@ -22,11 +21,8 @@ public class Event {
 	public String getAddress() {
 		return address;
 	}
-	public Date getDate() {
-		return date;
-	}
 	public long getDate() {
-		return date.getTime()
+		return date;
 	}
 	public ArrayList<String> getUsernames() {
 		return usernames;
@@ -52,11 +48,8 @@ public class Event {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public void setDate(Date date) {
+	public void setDate(long date) {
 		this.date = date;
-	}
-	public void setDate(long milliseconds) {
-		date = new Date(milliseconds);
 	}
 	public void addUsername(User user) {
 		usernames.add(user.getName());
