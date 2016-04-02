@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
 
 import com.example.css.dummy.DummyContent;
 import com.firebase.client.DataSnapshot;
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         Menu menu = navigationView.getMenu();
         menu.removeGroup(0);
-        Menu topChannelMenu = menu.addSubMenu("Deb Banerji");
+        Menu topChannelMenu = menu.addSubMenu("Options");
         topChannelMenu.add("Create Event");
         topChannelMenu.add("View Events");
         topChannelMenu.add("Contacts");
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity
         firebase.child("userList").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                System.out.println(snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
+                //System.out.println(snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
             }
 
             @Override
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity
         firebase.child("eventList").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                System.out.println(snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
+                //System.out.println(snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
             }
 
             @Override

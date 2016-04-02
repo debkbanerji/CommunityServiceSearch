@@ -1,8 +1,10 @@
 package com.example.css;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class EventListAdapter extends ArrayAdapter<HashMap> {
 
@@ -75,9 +78,20 @@ public class EventListAdapter extends ArrayAdapter<HashMap> {
 
             TextView addressText = (TextView) convertView.findViewById(com.example.css.R.id.addressText);
             addressText.setText("Location: " + ((Event) event).getAddress());
-
+            final String strAddress = ((Event) event).getAddress();
             TextView creatorText = (TextView) convertView.findViewById(com.example.css.R.id.creatorText);
             creatorText.setText("Organized by " + ((Event) event).getCreator());
+
+            //code to open in maps
+            addressText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String strUri = "geo:0,0?q=" + strAddress.replaceAll(" ", "+");
+                    System.out.println(strUri);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(strUri));
+                    getContext().startActivity(intent);
+                }
+            });
         }
 
 
