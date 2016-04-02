@@ -68,6 +68,12 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Menu menu = navigationView.getMenu();
+        menu.removeGroup(0);
+        Menu topChannelMenu = menu.addSubMenu("Deb's qualities");
+        topChannelMenu.add("Fab");
+        topChannelMenu.add("Bu");
+        topChannelMenu.add("Lous");
         HashMap<String, HashMap<String, Object>> eventMap = new HashMap<>();
         HashMap<String, HashMap<String, Object>> userMap = new HashMap<>();
 

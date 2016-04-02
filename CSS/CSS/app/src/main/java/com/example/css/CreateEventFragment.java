@@ -46,7 +46,7 @@ public class CreateEventFragment extends Fragment {
         enteredDescription.setMovementMethod(new ScrollingMovementMethod());
 
 
-        Button createButton = ((Button) rootView.findViewById(R.id.createButton));
+        ImageButton createButton = ((ImageButton) rootView.findViewById(R.id.createButton));
         createButton.setOnClickListener(new View.OnClickListener() {
 
 
