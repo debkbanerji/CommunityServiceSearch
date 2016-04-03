@@ -57,7 +57,6 @@ public class CreateEventFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-//                System.out.println("swag");
                 String name = enteredName.getText().toString();
                 String description = enteredDescription.getText().toString();
                 String address = enteredAddress.getText().toString();
@@ -78,7 +77,7 @@ public class CreateEventFragment extends Fragment {
                     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy/hh/mm");
 //                    Date d = formatter.parse(stringDate);
                     String createdDate = "" + month + "/" + day + "/" + year + "/" + hour + "/" + minute;
-                    System.out.println(createdDate);
+
                     Date d = formatter.parse(createdDate);
                     date = d.getTime();
                 } catch (ParseException e) {

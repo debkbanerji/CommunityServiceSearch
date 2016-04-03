@@ -24,8 +24,7 @@ import java.util.HashMap;
 import layout.AttendingEventsFragments;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,
-        MyEventFragment0.OnListFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +82,6 @@ public class MainActivity extends AppCompatActivity
         firebase.child("userList").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                //System.out.println(snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
             }
 
             @Override
@@ -94,7 +92,6 @@ public class MainActivity extends AppCompatActivity
         firebase.child("eventList").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                //System.out.println(snapshot.getValue());  //prints "Do you have data? You'll love Firebase."
             }
 
             @Override
@@ -160,8 +157,4 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
-
-    }
 }

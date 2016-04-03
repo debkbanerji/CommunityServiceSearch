@@ -49,10 +49,8 @@ public class EventListAdapter extends ArrayAdapter<HashMap> {
         }
 
         Object event = events.get(position);
-        //System.out.println("getView");
 
         if (event instanceof Event) {
-            // System.out.println("IS EVENT");
             TextView titleText = (TextView) convertView.findViewById(com.example.css.R.id.titleText);
             titleText.setText(((Event) event).getName());
 
