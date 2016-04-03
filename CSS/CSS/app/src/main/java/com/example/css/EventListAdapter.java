@@ -95,9 +95,11 @@ public class EventListAdapter extends ArrayAdapter<HashMap> {
                 }
             });
         }
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
         return convertView;
     }
-
 }

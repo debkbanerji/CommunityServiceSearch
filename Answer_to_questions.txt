@@ -1,0 +1,21 @@
+Deb Banerji, Mihir Parshionikar, and Steven Hsieh
+
+Note: We have created a Powerpoint to aid the presentation of our service.
+
+1.
+
+The name of our application, CS^2 stands for Community Service Search and allows users to actively engage in giving back to their communities.  This service finds and organizes community service events, and puts then at the fingertips of the user.  The user also has the ability to create their own community service events, and put them on the radar for other people to attend.
+
+The inspiration behind building this service was to empower individuals to become more involved in their respective communities.  Surveys show that although many people see the value of community service, most people are not as involved as they would like to be.  This is largely due to the fact that many people are not aware of opportunities to help out around them.  As the creators of this service, we wanted to spur users to give back to their communities, and instigate a push for positive social change.
+
+2. 
+
+We created an application for the android platform, using Java for a large part of the logic, XML for most of the visuals, and Gradle as a build tool.  The data is stored remotely and backed by a hash map. Since community service events can have similar names, we chose to hash the events according to the date and time that they are scheduled to occur, in order to maintain good performance. This is because the time complexity for manipulating events stored in the database, as well as for pushing events to the database is amortized O(1). The application also has support for extremely easy selection of the date and time the event occurs, while still storing this data in a space efficient manner.
+
+Another aspect of the application is that it has the ability to mark the location of an event on a user’s map. In order to do this, it manipulates the string representing the address of the event, and parses it via a Uri object so that it can launch Google Maps with the location.  The app also trims off trailing spaces entered by the user before pushing the data to the database in order to reduce space used and maintain the integrity of stored data.
+	
+3.
+
+Before the hackathon, the members of our team had little to no prior experience with the platform we were using. As a result, we learned a lot about how to structure projects efficiently within android, and effectively weave the variety of tools we had at our disposal into our workflow. In the past, we had had experience with data structures and algorithms within the classroom, but the application we built allowed us to apply those concepts, implementing them within the real world. If not for our experience within the classroom, we may have been able to reach some of our goals, but at the same time, without this project, we would not have understood these concepts nearly as well as we do now. We’re proud of the project as a whole, as we did not have very high expectations of ourselves at the beginning of the twelve hours, and couldn’t have imagined creating something that would allow us to learn so much while simultaneously giving back to the community.
+
+The fact that we were able to reach our primary goals, however, does not mean that we feel this service has reached its full potential.The programming conventions we followed would allow us to very easily add features to the service, making it more robust. In the future, we intend to add features that would make it easier for organizers and attendees of events to keep in touch, as well as additional data fields for different types of events. Additionally, the way the code is written and the data managed leads to (theoretically) infinite scalability.
