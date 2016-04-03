@@ -10,7 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.io.BufferedInputStream;
@@ -48,21 +51,6 @@ public class EventListAdapter extends ArrayAdapter<HashMap> {
         Object event = events.get(position);
         //System.out.println("getView");
 
-        if (event instanceof HashMap) {
-//            HashMap<String, Object> m = (HashMap) article;
-//            TextView titleText = (TextView) convertView.findViewById(com.example.css.R.id.titleText);
-//            //titleText.setText((String) (m.get("title"))+(m.get("seen")).toString()); //debug statement
-//            titleText.setText((String) (m.get("test")));
-//            TextView summaryText = (TextView) convertView.findViewById(com.example.css.R.id.summaryText);
-//            summaryText.setText((String) (m.get("summary")));
-//            TextView timeText = (TextView) convertView.findViewById(com.example.css.R.id.timeText);
-//            Date resultDate = new Date((long) (m.get("postTime")));
-//            String stringDate = resultDate.toString();
-//            String[] splitDate = stringDate.split(" ");
-//            stringDate = "Shared: " + splitDate[0] + " " + splitDate[1] + " " + splitDate[2] + ", " + splitDate[3] + " ";
-//            timeText.setText(stringDate);
-            //System.out.println("IS HASHMAP");
-        }
         if (event instanceof Event) {
             // System.out.println("IS EVENT");
             TextView titleText = (TextView) convertView.findViewById(com.example.css.R.id.titleText);
@@ -89,7 +77,6 @@ public class EventListAdapter extends ArrayAdapter<HashMap> {
                 @Override
                 public void onClick(View v) {
                     String strUri = "geo:0,0?q=" + strAddress.replaceAll(" ", "+");
-                    System.out.println(strUri);
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(strUri));
                     getContext().startActivity(intent);
                 }

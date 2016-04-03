@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.Switch;
 
 import com.example.css.Event;
 import com.example.css.EventListAdapter;
@@ -17,6 +19,8 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 /**
@@ -44,7 +48,22 @@ public class AttendingEventsFragments extends Fragment {
         final ListView feedListView = (ListView) rootView.findViewById(R.id.eventListView);
         feedListView.setAdapter(eventAdapter[0]);
 
-        // Inflate the layout for this fragment
+//        Switch sortSwitch = (Switch) rootView.findViewById(R.id.sortSwitch);
+
+//        //set the switch to ON
+//        sortSwitch.setChecked(true);
+//        //attach a listener to check for changes in state
+//        sortSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (isChecked) {
+//                    System.out.println("Switch is currently ON");
+//                } else {
+//                    System.out.println("Switch is currently OFF");
+//                }
+//            }
+//        });
+//        // Inflate the layout for this fragment
 
         final Firebase firebase = new Firebase("https://cssquare.firebaseio.com/");
 
@@ -68,9 +87,20 @@ public class AttendingEventsFragments extends Fragment {
                 } catch (NumberFormatException nfe) {
                     date = System.currentTimeMillis();
                 }
-
                 Event addEvent = new Event(name, creator, description, address, date, usernames);
                 eventList.add(addEvent);
+                Collections.sort(eventList, new Comparator() {
+                    @Override
+                    public int compare(Object lhs, Object rhs) {
+                        if (((Event) lhs).getDate() < ((Event) rhs).getDate()) {
+                            return -1;
+                        } else if (((Event) lhs).getDate() > ((Event) rhs).getDate()) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    }
+                });
                 eventAdapter[0] = new EventListAdapter(rootView.getContext(), R.layout.feed_item, eventList);
                 feedListView.setAdapter(eventAdapter[0]);
             }
