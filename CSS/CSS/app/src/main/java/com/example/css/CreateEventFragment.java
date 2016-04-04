@@ -12,6 +12,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
@@ -84,8 +85,19 @@ public class CreateEventFragment extends Fragment {
                     date = System.currentTimeMillis();
                 }
                 String stringDate = String.valueOf(date);
-                Event event = new Event(name, organizer, description, address, date, new ArrayList<String>());
-                firebase.child("eventList").child(stringDate).setValue(event);
+                if (name.isEmpty() || organizer.isEmpty() || address.isEmpty() || date == 0) { //tests for valid input
+                    enteredName.setText(name);
+                    enteredDescription.setText(description);
+                    enteredOrganizer.setText(organizer);
+                    enteredAddress.setText(address);
+                    Toast toast = Toast.makeText(getContext(), "Make sure to fill out all fields!", Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    Event event = new Event(name, organizer, description, address, date, new ArrayList<String>());
+                    firebase.child("eventList").child(stringDate).setValue(event);
+                    Toast toast = Toast.makeText(getContext(), "Event created", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         });
 
