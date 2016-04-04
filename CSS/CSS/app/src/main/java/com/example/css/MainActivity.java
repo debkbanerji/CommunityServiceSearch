@@ -47,18 +47,7 @@ public class MainActivity extends AppCompatActivity
         Firebase.setAndroidContext(this);
 
         Firebase firebase = new Firebase("https://cssquare.firebaseio.com/");
-
-//        firebase.child("eventList").setValue(true);
-//        firebase.child("userList").setValue(true);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+        //firebase.child("eventList").child("SWAG").removeValue(); //how to remove data from firebase
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

@@ -58,13 +58,11 @@ public class CreateEventFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                String name = enteredName.getText().toString();
-                String description = enteredDescription.getText().toString();
-                String address = enteredAddress.getText().toString();
-//                String stringDate = enteredDate.getText().toString();
-                String organizer = enteredOrganizer.getText().toString();
+                String name = Supertrim.trim(enteredName.getText().toString());
+                String description = Supertrim.trim(enteredDescription.getText().toString());
+                String address = Supertrim.trim(enteredAddress.getText().toString());
+                String organizer = Supertrim.trim(enteredOrganizer.getText().toString());
                 enteredName.setText("");
-//                enteredDate.setText("");
                 enteredDescription.setText("");
                 enteredAddress.setText("");
                 enteredOrganizer.setText("");
@@ -76,9 +74,7 @@ public class CreateEventFragment extends Fragment {
                 int minute = timePicker.getMinute();
                 try {
                     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yy/hh/mm");
-//                    Date d = formatter.parse(stringDate);
                     String createdDate = "" + month + "/" + day + "/" + year + "/" + hour + "/" + minute;
-
                     Date d = formatter.parse(createdDate);
                     date = d.getTime();
                 } catch (ParseException e) {
@@ -100,8 +96,18 @@ public class CreateEventFragment extends Fragment {
                 }
             }
         });
-
         return rootView;
+    }
+    public final static class Supertrim {
+        public static String trim(String str) {
+            while ((str.length() > 0) && (str.substring(0, 1).compareTo(" ")) == 0) {
+                str = str.substring(1, str.length());
+            }
+            while ((str.length() > 0) && str.substring(str.length() - 1, str.length()).compareTo(" ") == 0) {
+                str = str.substring(0, str.length() - 1);
+            }
+            return str;
+        }
     }
 
 }
