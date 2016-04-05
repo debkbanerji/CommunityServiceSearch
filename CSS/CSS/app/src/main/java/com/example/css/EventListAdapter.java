@@ -9,6 +9,7 @@ import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -27,16 +28,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-public class EventListAdapter extends ArrayAdapter<HashMap> {
+import layout.AttendingEventsFragments;
+
+public class EventListAdapter extends ArrayAdapter<HashMap>{
 
     private List events;
 
     public EventListAdapter(Context context, int resource, List objects) {
         super(context, resource, objects);
         events = objects;
-
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
         StrictMode.setThreadPolicy(policy);
     }
 
